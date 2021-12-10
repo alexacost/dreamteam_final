@@ -5,5 +5,5 @@
 
   session_destroy();
 
-  header('Location: /test_user_2');
+  header('Location: /dreamteam_final');
 ?>

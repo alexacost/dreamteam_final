@@ -35,7 +35,7 @@
       <h1 class="m-2"> hola, <?= $user['user']; ?> </h1>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/test_user_2">Agencia</a>
+                <a class="navbar-brand" href="/dreamteam_final">Agencia</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">

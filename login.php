@@ -3,7 +3,7 @@
   session_start();
 
   if (isset($_SESSION['user_id'])) {
-    header('Location: /test_user_2');
+    header('Location: /dreamteam_final');
   }
   require 'database.php';
 
@@ -17,7 +17,7 @@
 
     if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
       $_SESSION['user_id'] = $results['id'];
-      header("Location: /test_user_2");
+      header("Location: /dreamteam_final");
     } else {
       $message = 'Sorry, those credentials do not match';
     }
