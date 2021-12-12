@@ -1,6 +1,6 @@
 <?php
 
-  require 'database.php';
+  require '../database.php';
 
   $message = '';
 
@@ -25,7 +25,7 @@
     <meta charset="utf-8">
     <title>SignUp</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
 

@@ -37,7 +37,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid">
     <a class="navbar-brand" href="/dreamteam_final">
-      <img class="logo" src="logodt.png" alt="logo" width="41" height="40">
+      <img class="logo" src="img/logodt.png" alt="logo" width="41" height="40">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
           <a class="nav-link" href="#">Perfil de <?= $user['user']; ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-danger" href="logout.php" tabindex="-1" aria-disabled="true">Logout</a>
+          <a class="nav-link text-danger" href="sessions/logout.php" tabindex="-1" aria-disabled="true">Logout</a>
         </li>
       </ul>
     </div>
@@ -85,8 +85,8 @@
     <?php else: ?>
       <h1>Please Login or SignUp</h1>
 
-      <a  href="login.php">Login</a> or
-      <a  href="signup.php">SignUp</a>
+      <a  href="sessions/login.php">Login</a> or
+      <a  href="sessions/signup.php">SignUp</a>
     <?php endif; ?>
   </main>
 
