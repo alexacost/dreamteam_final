@@ -15,6 +15,14 @@
       $user = $results;
     }
   }
+
+    $record = $conn->prepare('SELECT * FROM posteos WHERE id_posteo = :id_posteo');
+    $id_posteo = ($_GET['id_posteo']);
+
+
+
+
+
 ?>
 
 <!doctype html>
@@ -33,7 +41,7 @@
 <body class="container">
 
   <header>
-  <?php if(!empty($user)): ?>
+  <?php if(!empty($user) && !empty($id_posteo)): ?>
     <nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid">
     <a class="navbar-brand" href="/dreamteam_final">
@@ -68,18 +76,7 @@
       <?php
       $sql = 'SELECT * FROM posteos';
       foreach ($conn->query($sql) as $row) { ?>
-
-      <div class="card col-3 seccion" style="width: 18rem;">
-        <?php 
-        echo '<img class="card-img-top" src="data:foto/jpeg;base64,'.base64_encode($row['contenido']).'"/>';
-        ?>
-        <div class="card-body">
-          <p class="card-title texto-negrita"><?=$row['titulo']?></p>
-          <p class="precios">$ 10.000</p>
-          <p class="card-text"><?=$row['descripcion']?></p>
-          <a href="master.php?id=<?=$row['id_posteo'];?>" class="btn boton">Ver más</a>
-        </div>
-      </div>
+      <p> <?= $row['titulo'] ?> </p>
       <?php   } ?>
     </section>
     <?php else: ?>
