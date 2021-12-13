@@ -16,13 +16,7 @@
     }
   }
 
-    $record = $conn->prepare('SELECT * FROM posteos WHERE id_posteo = :id_posteo');
-    $id_posteo = ($_GET['id_posteo']);
-
-
-
-
-
+    $id_posteo = ($_GET['id']);
 ?>
 
 <!doctype html>
@@ -74,10 +68,10 @@
     <section class=" d-flex justify-content-between row">
 
       <?php
-      $sql = 'SELECT * FROM posteos';
+      $sql = "SELECT * FROM posteos WHERE id_posteo = '{$id_posteo}'";
       foreach ($conn->query($sql) as $row) { ?>
-      <p> <?= $row['titulo'] ?> </p>
-      <?php   } ?>
+      <p> <?= $row['id_posteo'] ?> </p>
+      <?php  } ?>
     </section>
     <?php else: ?>
       <h1>Please Login or SignUp</h1>
