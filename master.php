@@ -70,7 +70,27 @@
       <?php
       $sql = "SELECT * FROM posteos WHERE id_posteo = '{$id_posteo}'";
       foreach ($conn->query($sql) as $row) { ?>
-      <p> <?= $row['id_posteo'] ?> </p>
+      <div class="container">
+  <div class="row">
+    <div class="col">
+    <figure class="figure">
+          <?php 
+        echo '<img class="figure-img img-fluid rounded" src="data:foto/jpeg;base64,'.base64_encode($row['contenido']).'"/>';
+        ?>
+    </figure>
+    </div>
+    <div class="col m-3">
+      <h1 class="text-start"> <?= $row['titulo'] ?></h1>
+    <p class="mb-5 text-start"> <?= $row['descripcion'] ?> </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>Comment whatever you want!</p>
+    <input type="text" name="" id="">
+    </div>
+  </div>
+</div>
       <?php  } ?>
     </section>
     <?php else: ?>
