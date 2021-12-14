@@ -1,7 +1,8 @@
 <?php
   session_start();
-
+  include 'comentarios.php';
   require 'database.php';
+  $id_posteo = ($_GET['id']);
 
   if (isset($_SESSION['user_id'])) {
     $records = $conn->prepare('SELECT user,id, email, password FROM usuarios WHERE id = :id');
@@ -16,7 +17,7 @@
     }
   }
 
-    $id_posteo = ($_GET['id']);
+  
 ?>
 
 <!doctype html>
@@ -63,8 +64,6 @@
   </header>
 
   <main>
-    <p>Filtro</p>
-
     <section class=" d-flex justify-content-between row">
 
       <?php
@@ -87,7 +86,12 @@
   <div class="row">
     <div class="col">
       <p>Comment whatever you want!</p>
-    <input type="text" name="" id="">
+      <form method="POST" action=''>
+      <input hidden id="id" value="<?php $row['id'] ?>">
+      <input hidden id="id_posteo" value="<?php $row['id_posteo'] ?>">
+    <input type="text" id="comentario" name="comentario" value="comentario" placeholder="comentario">
+    <button type="submit" id="coment" name="coment" value="submit">Submit</button>
+    </form>
     </div>
   </div>
 </div>

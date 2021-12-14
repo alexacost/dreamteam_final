@@ -44,7 +44,7 @@
     <span>or <a href="signup.php">SignUp</a></span>
 
     <form action="login.php" method="POST">
-      <input name="email" type="text" placeholder="Enter your email">
+      <input style="width: 300px;" name="email" type="text" placeholder="Enter your email">
       <input name="password" type="password" placeholder="Enter your Password">
       <input type="submit" value="Submit">
     </form>
