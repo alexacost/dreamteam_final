@@ -2,7 +2,7 @@
   session_start();
   include 'comentarios.php';
   require 'database.php';
-  $id_posteo = ($_GET['id']);
+  
 
   if (isset($_SESSION['user_id'])) {
     $records = $conn->prepare('SELECT user,id, email, password FROM usuarios WHERE id = :id');
@@ -15,9 +15,7 @@
     if (count($results) > 0) {
       $user = $results;
     }
-  }
-
-  
+  }  
 ?>
 
 <!doctype html>
@@ -36,7 +34,8 @@
 <body class="container">
 
   <header>
-  <?php if(!empty($user) && !empty($id_posteo)): ?>
+  <?php $id_posteo = ($_GET['id']);
+  if(!empty($user) && !empty($id_posteo)): ?>
     <nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid">
     <a class="navbar-brand" href="/dreamteam_final">
@@ -87,8 +86,8 @@
     <div class="col">
       <p>Comment whatever you want!</p>
       <form method="POST" action=''>
-      <input hidden id="id" value="<?php $row['id'] ?>">
-      <input hidden id="id_posteo" value="<?php $row['id_posteo'] ?>">
+      <input hidden id="id" name="id" value="<?php $row['id'] ?>">
+      <input hidden id="id_posteo" name="id_posteo" value="<?php $row['id_posteo'] ?>">
     <input type="text" id="comentario" name="comentario" value="comentario" placeholder="comentario">
     <button type="submit" id="coment" name="coment" value="submit">Submit</button>
     </form>
@@ -96,6 +95,15 @@
   </div>
 </div>
       <?php  } ?>
+
+      <?php $sql = "SELECT * FROM comentarios WHERE id_posteos = '{$id_posteo}'";
+      foreach ($conn->query($sql) as $row) { ?>
+      <h2>Comments</h2>
+      <p><?=$row['comentario']?></p>
+
+<?php  } ?>
+
+      
     </section>
     <?php else: ?>
       <h1>Please Login or SignUp</h1>
