@@ -1,21 +1,6 @@
 <?php
-  session_start();
-  include 'comentarios.php';
-  require 'database.php';
-  
-
-  if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT user,id, email, password FROM usuarios WHERE id = :id');
-    $records->bindParam(':id', $_SESSION['user_id']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
-
-    $user = null;
-
-    if (count($results) > 0) {
-      $user = $results;
-    }
-  }  
+include 'comentarios.php';
+$id_posteo = ($_GET['id']);
 ?>
 
 <!doctype html>
@@ -26,16 +11,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
   <link rel="shortcut icon" href="img/mando.ico" type="image/x-icon">
   <title>DreamTeam</title>
 </head>
 
 <body class="container">
-
   <header>
-  <?php $id_posteo = ($_GET['id']);
-  if(!empty($user) && !empty($id_posteo)): ?>
     <nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid">
     <a class="navbar-brand" href="/dreamteam_final">
@@ -63,11 +45,13 @@
   </header>
 
   <main>
+  <?php if(!empty($message)): ?>
+      <p style="color:green;" > <?= $message ?></p>
+    <?php endif; ?>
     <section class=" d-flex justify-content-between row">
-
       <?php
       $sql = "SELECT * FROM posteos WHERE id_posteo = '{$id_posteo}'";
-      foreach ($conn->query($sql) as $row) { ?>
+      foreach ($conn->query($sql) as $row) { $id_posteo = $row['id_posteo']; ?>
       <div class="container">
   <div class="row">
     <div class="col">
@@ -85,9 +69,8 @@
   <div class="row">
     <div class="col">
       <p>Comment whatever you want!</p>
-      <form method="POST" action=''>
-      <input hidden id="id" name="id" value="<?php $row['id'] ?>">
-      <input hidden id="id_posteo" name="id_posteo" value="<?php $row['id_posteo'] ?>">
+      <form action="comentarios.php" method="POST">
+      <input hidden id="id_posteos" name="id_posteos" value="<?= $id_posteo ?>">
     <input type="text" id="comentario" name="comentario" value="comentario" placeholder="comentario">
     <button type="submit" id="coment" name="coment" value="submit">Submit</button>
     </form>

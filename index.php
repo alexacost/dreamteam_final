@@ -77,7 +77,7 @@
           <p class="card-title texto-negrita"><?=$row['titulo']?></p>
           <p class="precios">$ 10.000</p>
           <p class="card-text"><?=$row['descripcion']?></p>
-          <a href="master.php?id=<?=$row['id_posteo'];?>" class="btn boton">Ver más</a>
+          <a href="sessions/comentworking.php?id=<?=$row['id_posteo'];?>" class="btn boton">Ver más</a>
         </div>
       </div>
       <?php   } ?>
