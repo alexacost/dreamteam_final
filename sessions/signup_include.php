@@ -9,12 +9,13 @@
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $_POST['email']);
     $stmt->bindParam(':user', $_POST['user']);
-    $stmt->bindParam(':password', $_POST['password']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $stmt->bindParam(':password', $password);
 
     if ($stmt->execute()) {
-      $message = 'Success!';
+      $message = 'Successfully created new user';
     } else {
-      $message = 'Sorry there must have been an issue :(';
+      $message = 'Sorry there must have been an issue creating your account';
     }
   }
 ?>
