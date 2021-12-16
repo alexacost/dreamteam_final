@@ -33,7 +33,7 @@ include 'index_include.php';
           <a class="nav-link active" aria-current="page" href="/dreamteam_final">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="perfil.php">Perfil de <?= $user['user']; ?></a>
+          <a class="nav-link" href="sessions/perfil.php">Perfil de <?= $user['user']; ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-danger" href="sessions/logout.php" tabindex="-1" aria-disabled="true">Logout</a>
