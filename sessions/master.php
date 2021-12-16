@@ -1,5 +1,6 @@
 <?php
 include 'comentarios.php';
+include '../index_include.php';
 $id_posteo = ($_GET['id']);
 ?>
 
@@ -88,12 +89,6 @@ $id_posteo = ($_GET['id']);
 
       
     </section>
-    <?php else: ?>
-      <h1>Please Login or SignUp</h1>
-
-      <a  href="sessions/login.php">Login</a> or
-      <a  href="sessions/signup.php">SignUp</a>
-    <?php endif; ?>
   </main>
 
   <footer class="page-footer font-small blue">
