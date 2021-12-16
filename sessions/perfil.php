@@ -1,5 +1,21 @@
 <?php
-include 'index_include.php';
+include '../index_include.php';
+
+  $message = '';
+  $profile = $_SESSION['user_id'];
+  if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    $sql = "UPDATE usuarios SET user = :user, email = :email WHERE :user = '{$profile}'";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':user', $_POST['user']);
+
+    if ($stmt->execute()) {
+      $message = 'Success!';
+    } else {
+      $message = 'Sorry there must have been an issue :(';
+    }
+  }
+
 ?>
 
 <!doctype html>
@@ -10,7 +26,7 @@ include 'index_include.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
   <link rel="shortcut icon" href="img/mando.ico" type="image/x-icon">
   <title>DreamTeam</title>
 </head>
@@ -22,7 +38,7 @@ include 'index_include.php';
     <nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid">
     <a class="navbar-brand" href="/dreamteam_final">
-      <img class="logo" src="img/logodt.png" alt="logo" width="41" height="40">
+      <img class="logo" src="../img/logodt.png" alt="logo" width="41" height="40">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,7 +49,7 @@ include 'index_include.php';
           <a class="nav-link active" aria-current="page" href="/dreamteam_final">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="sessions/perfil.php">Perfil de <?= $user['user']; ?></a>
+          <a class="nav-link" href="#">Perfil de <?= $user['user']; ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-danger" href="sessions/logout.php" tabindex="-1" aria-disabled="true">Logout</a>
@@ -46,25 +62,36 @@ include 'index_include.php';
   </header>
 
   <main>
-    <p>Filtro</p>
+
+  <?php if(!empty($message)): ?>
+      <p style="color:green;" > <?= $message ?></p>
+    <?php endif; ?>
 
     <section class=" d-flex justify-content-between row">
 
       <?php
-      $sql = 'SELECT * FROM posteos';
+      $sql = "SELECT user,email,password FROM usuarios where id = '{$profile}'";
       foreach ($conn->query($sql) as $row) { ?>
-
-      <div class="card col-3 seccion" style="width: 18rem;">
-        <?php 
-        echo '<img class="card-img-top" src="data:foto/jpeg;base64,'.base64_encode($row['contenido']).'"/>';
-        ?>
-        <div class="card-body">
-          <p class="card-title texto-negrita"><?=$row['titulo']?></p>
-          <p class="precios">$ 10.000</p>
-          <p class="card-text"><?=$row['descripcion']?></p>
-          <a href="sessions/comentworking.php?id=<?=$row['id_posteo'];?>" class="btn boton">Ver más</a>
+      <form action="" method="POST">
+      <div class="row">
+          <div class="col">
+              <p>User</p>
+      <input type="text" name="user" value="<?= $row['user'] ?>">
         </div>
+        <div class="col">
+            <p>password</p>
+      <input type="password" name="password" value="<?= $row['password'] ?>">
       </div>
+      <div class="col">
+        <p>Email</p>
+      <input type="text" name="email" value="<?= $row['email'] ?>">
+      </div>
+      <div class="col">
+      <input type="submit" value="Guardar Cambios">
+      </div>
+      </div>
+      </form>
+
       <?php   } ?>
     </section>
     <?php else: ?>

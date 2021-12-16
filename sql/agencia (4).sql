@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2021 a las 23:38:31
+-- Tiempo de generación: 16-12-2021 a las 00:28:56
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -41,6 +41,71 @@ INSERT INTO `areas` (`id_area`, `area`) VALUES
 (2, 'Marketing'),
 (3, 'Diseño ux/ui'),
 (4, 'Project manager');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id` int(20) NOT NULL,
+  `id_usuario` int(20) NOT NULL,
+  `id_posteos` int(20) NOT NULL,
+  `comentario` varchar(140) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `id_usuario`, `id_posteos`, `comentario`) VALUES
+(1, 0, 1, 'comentario1º2'),
+(2, 0, 1, 'comentario4'),
+(3, 0, 1, 'comentario4'),
+(4, 0, 1, 'comentario43'),
+(5, 0, 1, 'comentarioasad'),
+(6, 0, 1, 'comentarioasad'),
+(7, 0, 4, 'comentarioas'),
+(8, 0, 4, 'comentario'),
+(9, 0, 4, 'comentario'),
+(10, 0, 4, 'comentario'),
+(11, 0, 4, 'comentarios'),
+(12, 0, 4, 'comentario'),
+(13, 0, 4, 'comentario'),
+(14, 0, 4, 'comentario'),
+(15, 0, 4, 'comentario'),
+(16, 0, 4, 'comentarioaass'),
+(17, 0, 4, 'comentario'),
+(18, 0, 4, 'comentario<s'),
+(19, 0, 4, 'comentarios'),
+(20, 0, 4, 'comentarios'),
+(21, 0, 1, 'comentarioas'),
+(22, 0, 4, 'comentarioaff'),
+(23, 0, 4, 'comentarioeee'),
+(24, 0, 4, 'comentarioss'),
+(26, 0, 4, 'comentarioasd'),
+(27, 0, 4, 'putas'),
+(28, 0, 4, 'todas putas'),
+(29, 0, 4, 'todas putas'),
+(30, 0, 4, 'comentarioasadasdsasdqweqwew'),
+(31, 0, 4, 'comentarioasadasdsasdqweqwew'),
+(32, 0, 4, 'comentarioasadasdsasdqweqwew'),
+(33, 0, 4, 'comentarioedsaed'),
+(34, 0, 4, 'comentarioedsaed'),
+(35, 0, 0, 'comentarioaaaaaassdsfafsfa'),
+(36, 0, 0, 'comentarioaaaaaassdsfafsfa'),
+(37, 0, 0, 'pedro me ayudaste grax'),
+(38, 0, 4, 'comentarioaaaasqwerre'),
+(39, 0, 4, 'comentarioaaaasqwerre'),
+(40, 0, 4, 'comentarioasads'),
+(41, 0, 0, 'putarraca'),
+(42, 0, 0, 'zara'),
+(43, 0, 0, 'wacha'),
+(44, 0, 4, 'turro'),
+(45, 0, 4, 'comentario'),
+(46, 0, 4, 'turro'),
+(47, 0, 6, 'youtube');
 
 -- --------------------------------------------------------
 
@@ -162,7 +227,12 @@ INSERT INTO `usuarios` (`id`, `user`, `password`, `email`, `id_nivel`, `id_local
 (25, 'marisa1', '$2y$10$irBt6U7ZAzlGRboZJQHd8.tSmESI6z9YONFo6vifVDLZc8MnTLkUq', 'marisa1@gmail.com', 0, 0, 0),
 (26, 'matias', '$2y$10$pDwj0ZsVVZVygDVf9Zx/ku/7ow6DW9Rrivcr6ecQbj3d0fOVx5TUW', 'matias@gmail.com', 0, 0, 0),
 (27, 'beatriz', '$2y$10$Gc6fwhbfH1BsciSY0Sd0FOKr19oCW3e28dCwF3Fkknd5mKvbCodE2', 'beatriz', 0, 0, 0),
-(28, 'jose', '$2y$10$R/DWW3OKO6hWRqqGUIMev.2GWPnc/84eriUWvi24sMm7srTD8kRWe', 'jose', 0, 0, 0);
+(28, 'jose', '$2y$10$R/DWW3OKO6hWRqqGUIMev.2GWPnc/84eriUWvi24sMm7srTD8kRWe', 'jose', 0, 0, 0),
+(29, 'martita', '$2y$10$leV81ZHUzcMVtL4b.BiwUeRz8BPTPYviuwgqHZwfT14yf8bgx/xtm', 'martita', 0, 0, 0),
+(30, 'mirta', '$2y$10$vVGqWbS6R64K94yT4/BJVejj1qmHPV96rcR5qr2HsGptX/6sqr0Tm', 'mirta', 0, 0, 0),
+(31, 'muso', '$2y$10$d0kalwbVlWC1qt2CkoaTjuzbJPpp2LHbolI8yd5EzIRMOf.1ZTN8.', 'muso', 0, 0, 0),
+(32, 'martin', '$2y$10$.7ojR7YnBB4h.hVMh2FKxeq/Ba44nMbbmzYu5eRpLFvpLooCNjHbK', 'martin', 0, 0, 0),
+(33, 'tere', '$2y$10$hq/pOwBwLTMZQu98DD6h9u6.rYTyNA7JYsi/8GOO6yHbtgKP8J.QS', 'tere', 0, 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -173,6 +243,12 @@ INSERT INTO `usuarios` (`id`, `user`, `password`, `email`, `id_nivel`, `id_local
 --
 ALTER TABLE `areas`
   ADD PRIMARY KEY (`id_area`);
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `localidades`
@@ -213,6 +289,12 @@ ALTER TABLE `areas`
   MODIFY `id_area` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8004;
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
 -- AUTO_INCREMENT de la tabla `localidades`
 --
 ALTER TABLE `localidades`
@@ -234,7 +316,7 @@ ALTER TABLE `posteos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas
