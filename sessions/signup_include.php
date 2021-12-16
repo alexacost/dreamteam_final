@@ -10,11 +10,11 @@
     $stmt->bindParam(':email', $_POST['email']);
     $stmt->bindParam(':user', $_POST['user']);
     $stmt->bindParam(':password', $_POST['password']);
-    
+
     if ($stmt->execute()) {
-      $message = 'Successfully created new user';
+      $message = 'Success!';
     } else {
-      $message = 'Sorry there must have been an issue creating your account';
+      $message = 'Sorry there must have been an issue :(';
     }
   }
 ?>

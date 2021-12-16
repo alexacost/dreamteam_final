@@ -49,6 +49,9 @@ $profile = $_SESSION['user_id'];
 
   <main>
 
+  <?php if(!empty($message)): ?>
+      <p style="color:green;" > <?= $message ?></p>
+    <?php endif; ?>
 
     <section class=" d-flex justify-content-between row">
 
@@ -70,7 +73,7 @@ $profile = $_SESSION['user_id'];
       <input type="text" name="email" value="<?= $row['email'] ?>">
       </div>
       <div class="col">
-      <input type="submit" value="Submit">
+      <input type="submit" value="Guardar Cambios">
       </div>
       </div>
       </form>
