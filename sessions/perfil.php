@@ -1,5 +1,7 @@
 <?php
-include 'index_include.php';
+include '../index_include.php';
+include 'signup_include.php';
+$profile = $_SESSION['user_id'];
 ?>
 
 <!doctype html>
@@ -10,7 +12,7 @@ include 'index_include.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
   <link rel="shortcut icon" href="img/mando.ico" type="image/x-icon">
   <title>DreamTeam</title>
 </head>
@@ -22,7 +24,7 @@ include 'index_include.php';
     <nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid">
     <a class="navbar-brand" href="/dreamteam_final">
-      <img class="logo" src="img/logodt.png" alt="logo" width="41" height="40">
+      <img class="logo" src="../img/logodt.png" alt="logo" width="41" height="40">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -51,19 +53,27 @@ include 'index_include.php';
     <section class=" d-flex justify-content-between row">
 
       <?php
-      $sql = 'SELECT user,email,password FROM usuarios';
+      $sql = "SELECT user,email,password FROM usuarios where id = '{$profile}'";
       foreach ($conn->query($sql) as $row) { ?>
+      <form action="" method="POST">
       <div class="row">
           <div class="col">
-      <input type="text" value="<?= $row['user'] ?>">
+              <p>User</p>
+      <input type="text" name="user" value="<?= $row['user'] ?>">
         </div>
         <div class="col">
-      <input type="password" value="<?= $row['password'] ?>">
+            <p>password</p>
+      <input type="password" name="password" value="<?= $row['password'] ?>">
       </div>
       <div class="col">
-      <input type="text" value="<?= $row['email'] ?>">
+        <p>Email</p>
+      <input type="text" name="email" value="<?= $row['email'] ?>">
+      </div>
+      <div class="col">
+      <input type="submit" value="Submit">
       </div>
       </div>
+      </form>
 
       <?php   } ?>
     </section>
