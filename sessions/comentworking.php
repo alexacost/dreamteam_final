@@ -35,7 +35,7 @@ $id_posteo = ($_GET['id']);
           <a class="nav-link" href="#">Perfil de <?= $user['user']; ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-danger" href="sessions/logout.php" tabindex="-1" aria-disabled="true">Logout</a>
+          <a class="nav-link text-danger" href="logout.php" tabindex="-1" aria-disabled="true">Logout</a>
         </li>
       </ul>
     </div>

@@ -9,9 +9,8 @@
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $_POST['email']);
     $stmt->bindParam(':user', $_POST['user']);
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':password', $password);
-
+    $stmt->bindParam(':password', $_POST['password']);
+    
     if ($stmt->execute()) {
       $message = 'Successfully created new user';
     } else {

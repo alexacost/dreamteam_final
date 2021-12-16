@@ -33,7 +33,7 @@ include 'index_include.php';
           <a class="nav-link active" aria-current="page" href="/dreamteam_final">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="perfil.php">Perfil de <?= $user['user']; ?></a>
+          <a class="nav-link" href="#">Perfil de <?= $user['user']; ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-danger" href="sessions/logout.php" tabindex="-1" aria-disabled="true">Logout</a>
@@ -46,25 +46,25 @@ include 'index_include.php';
   </header>
 
   <main>
-    <p>Filtro</p>
+
 
     <section class=" d-flex justify-content-between row">
 
       <?php
-      $sql = 'SELECT * FROM posteos';
+      $sql = 'SELECT user,email,password FROM usuarios';
       foreach ($conn->query($sql) as $row) { ?>
-
-      <div class="card col-3 seccion" style="width: 18rem;">
-        <?php 
-        echo '<img class="card-img-top" src="data:foto/jpeg;base64,'.base64_encode($row['contenido']).'"/>';
-        ?>
-        <div class="card-body">
-          <p class="card-title texto-negrita"><?=$row['titulo']?></p>
-          <p class="precios">$ 10.000</p>
-          <p class="card-text"><?=$row['descripcion']?></p>
-          <a href="sessions/comentworking.php?id=<?=$row['id_posteo'];?>" class="btn boton">Ver más</a>
+      <div class="row">
+          <div class="col">
+      <input type="text" value="<?= $row['user'] ?>">
         </div>
+        <div class="col">
+      <input type="password" value="<?= $row['password'] ?>">
       </div>
+      <div class="col">
+      <input type="text" value="<?= $row['email'] ?>">
+      </div>
+      </div>
+
       <?php   } ?>
     </section>
     <?php else: ?>
