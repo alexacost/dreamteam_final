@@ -57,7 +57,6 @@ include '../index_include.php';
       </ul>
     </div>
   </div>
-    <h6 class="titulo m-1">Catalogo Multimedial</h6>
     </nav>
   </header>
 
@@ -67,26 +66,26 @@ include '../index_include.php';
       <p style="color:green;" > <?= $message ?></p>
     <?php endif; ?>
 
-    <section class=" d-flex justify-content-between row">
+    <section class=" d-flex justify-content-between row mt-5">
 
       <?php
       $sql = "SELECT user,email,password FROM usuarios where id = '{$profile}'";
       foreach ($conn->query($sql) as $row) { ?>
       <form action="" method="POST">
-      <div class="row">
+      <div class="d-flex flex-column">
           <div class="col">
-              <p>User</p>
+              <p class="d-flex flex-start nombrecitos">User</p>
       <input type="text" name="user" value="<?= $row['user'] ?>">
         </div>
         <div class="col">
-            <p>password</p>
+            <p  class="d-flex flex-start nombrecitos">Password</p>
       <input type="password" name="password" value="<?= $row['password'] ?>">
       </div>
       <div class="col">
-        <p>Email</p>
+        <p class="d-flex flex-start nombrecitos">Email</p>
       <input type="text" name="email" value="<?= $row['email'] ?>">
       </div>
-      <div class="col">
+      <div class="d-flex flex-column">
       <input type="submit" value="Guardar Cambios">
       </div>
       </div>
