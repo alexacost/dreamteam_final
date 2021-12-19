@@ -53,7 +53,6 @@ include 'index_include.php';
       $materia=$_POST['xMateria'];
 
       //// Boton Buscar ////
-      echo 'funciona';
 
       if (isset($_POST['buscar']))
       {
