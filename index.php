@@ -1,5 +1,6 @@
 <?php
 include 'index_include.php';
+
 ?>
 
 <!doctype html>
@@ -46,14 +47,34 @@ include 'index_include.php';
   </header>
 
   <main>
-    <p>Filtro</p>
+    <?php
+      //// Variable busqueda ////
+      $where="";
+      $materia=$_POST['xMateria'];
+
+      //// Boton Buscar ////
+      echo 'funciona';
+
+      if (isset($_POST['buscar']))
+      {
+        if ($_POST['xMateria'])
+        {
+          $where="where titulo like '".$materia."%'";
+        }
+      };
+
+      //// Consulta DB ////
+      $sql = "SELECT * FROM posteos $where";
+      $resMateria=$conn->query($sql);
+    ?>
+
+    <form method="post">
+    <input name="xMateria" type="text" placeholder="Materia...">    
+    <button name="buscar" type="submit">Buscar</button>
+    </form>
 
     <section class=" d-flex justify-content-between row">
-
-      <?php
-      $sql = 'SELECT * FROM posteos';
-      foreach ($conn->query($sql) as $row) { ?>
-
+        <?php foreach ($conn->query($sql) as $row) { ?>
       <div class="card col-3 seccion" style="width: 18rem;">
         <?php 
         echo '<img class="card-img-top" src="data:foto/jpeg;base64,'.base64_encode($row['contenido']).'"/>';
@@ -65,6 +86,7 @@ include 'index_include.php';
           <a href="sessions/comentworking.php?id=<?=$row['id_posteo'];?>" class="btn boton">Ver más</a>
         </div>
       </div>
+      
       <?php   } ?>
     </section>
     <?php else: ?>
