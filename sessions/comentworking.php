@@ -32,7 +32,7 @@ $id_posteo = ($_GET['id']);
           <a class="nav-link active" aria-current="page" href="/dreamteam_final">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Perfil de <?= $user['user']; ?></a>
+          <a class="nav-link" href="perfil.php">Perfil de <?= $user['user']; ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-danger" href="logout.php" tabindex="-1" aria-disabled="true">Logout</a>
@@ -64,6 +64,7 @@ $id_posteo = ($_GET['id']);
     <div class="col m-3 d-flex  flex-column flex-end">
       <h1 class="text-start"> <?= $row['titulo'] ?></h1>
     <p class="mb-5 text-start"> <?= $row['descripcion'] ?> </p>
+    <p class="text-muted d-flex "> Posteo creado por  <?=$row['user']?> </p>
     </div>
   </div>
   <div class="row divtuopinion">
@@ -85,7 +86,7 @@ $id_posteo = ($_GET['id']);
          ?>
 
       <p class="d-flex flex-start comentaritos"><?=$row['comentario']?></p>
-      <p class="d-flex flex-start comentaritos"><?=$row['user']?></p>
+      <p class="d-flex flex-start text-muted">Comentado por <?=$row['user']?> a las <?=$row['time']?> </p>
       <?php  } ?>
 
     </form>
