@@ -1,5 +1,6 @@
 <?php
 include 'index_include.php';
+error_reporting(0);
 ?>
 
 <!doctype html>
@@ -41,21 +42,39 @@ include 'index_include.php';
       </ul>
     </div>
   </div>
+    <h6 class="titulo m-1">Catalogo Multimedial</h6>
     </nav>
   </header>
 
   <main>
-<p class="d-flex flex-start">Filtro</p>
+    <?php
+      //// Variable busqueda ////
+      $where="";
+      $materia=$_POST['subject'];
 
-    
+      //// Boton Buscar ////
 
-    <section class="d-flex justify-content-around row">
+      if (isset($_POST['buscar']))
+      {
+        if ($_POST['subject'])
+        {
+          $where="where titulo like '".$materia."%'";
+        }
+      };
 
-      <?php
-      $sql = 'SELECT * FROM posteos';
-      foreach ($conn->query($sql) as $row) { ?>
+      //// Consulta DB ////
+      $sql = "SELECT * FROM posteos $where";
+      $resMateria=$conn->query($sql);
+    ?>
 
-      <div class="card seccion" style="width: 18rem;">
+    <form method="post">
+    <input name="subject" type="text" placeholder="Busca un titulo...">    
+    <button name="buscar" type="submit" class="boton btn d-flex flex-start">Buscar</button>
+    </form>
+
+    <section class=" d-flex justify-content-between row">
+        <?php foreach ($conn->query($sql) as $row) { ?>
+      <div class="card col-3 seccion" style="width: 18rem;">
         <?php 
         echo '<img class="card-img-top" src="data:foto/jpeg;base64,'.base64_encode($row['contenido']).'"/>';
         ?>
@@ -66,6 +85,7 @@ include 'index_include.php';
           <a href="sessions/comentworking.php?id=<?=$row['id_posteo'];?>" class="btn boton">Ver más</a>
         </div>
       </div>
+      
       <?php   } ?>
     </section>
     <?php else: ?>
@@ -76,7 +96,7 @@ include 'index_include.php';
     <?php endif; ?>
   </main>
 
-  <footer class="page-footer font-small blue mt-5 mb-3">
+  <footer class="page-footer font-small blue">
     <div class="footer-copyright text-center py-3">© 2021 Copyright: <span class="footer_texto">DreamTeam</span> </div>
   </footer>
 
