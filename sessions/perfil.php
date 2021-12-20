@@ -94,10 +94,10 @@ include '../index_include.php';
 
       <?php else: ?> 
         <?php
-      $sql = "SELECT user,email,password,id_nivel FROM usuarios";
+      $sql = "SELECT id,user,email,password,id_nivel FROM usuarios";
       foreach ($conn->query($sql) as $row) { ?>
       
-      <form action="" method="POST">
+      <form action="perfil.php" method="POST">
       <div class="d-flex flex-column">
           <div class="col">
               <p class="d-flex flex-start nombrecitos">User</p>
@@ -115,6 +115,10 @@ include '../index_include.php';
       <input type="submit" value="Guardar Cambios">
       </div>
       </div>
+      </form>
+      <form action="delete.php" method="POST">
+      <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>"> 
+      <input type="submit" value="Eliminar">
       </form>
       <?php   } ?>
       <?php endif; ?>
