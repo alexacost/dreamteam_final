@@ -48,10 +48,10 @@ $id_posteo = ($_GET['id']);
     <?php endif; ?>
     <form action="" method="POST">
     <?php
-      $sql = "SELECT * FROM posteos WHERE id_posteo = '$id_posteo'";
+      $sql = "SELECT * FROM posteos INNER JOIN usuarios ON posteos.id_usuario = usuarios.id WHERE id_posteo = '$id_posteo'  ";
       
       foreach ($conn->query($sql) as $row) { $id_posteo = $row['id_posteo'];
-      $id_usuario = $row['id'] ?>
+      $id_usuario = $row['user'] ?>
       <div class="">
   <div class="row mt-5">
     <div class="col">
@@ -70,7 +70,7 @@ $id_posteo = ($_GET['id']);
     <div class="col">
       <p class="d-flex flex-start mt-5 dejanosTuOpinon">¡Dejanos tu opinión!</p>
       <input hidden id="id_posteos" name="id_posteos" value="<?= $id_posteo ?>">
-      <input hidden id="id_posteos" name="id_posteos" value="<?= $id_usuario ?>">
+      <input hidden id="id_usuario" name="id_usuario" value="<?=$_SESSION['user_id']?>">
     <input type="text" id="comentario" name="comentario" value="comentario" placeholder="comentario">
     <button type="submit" id="coment" name="coment" value="submit" class="boton btn d-flex flex-start">Submit</button>
     </form>
@@ -78,11 +78,14 @@ $id_posteo = ($_GET['id']);
   </div>
 </div>
       <?php  } ?>
+
       <h2 class="d-flex flex-start mt-5">Comentarios</h2>
-      <?php $sql = "SELECT * FROM comentarios WHERE id_posteos = '{$id_posteo}'";
-      foreach ($conn->query($sql) as $row) { ?>
+      <?php $sql = "SELECT * FROM comentarios INNER JOIN usuarios ON comentarios.id_usuario = usuarios.id  WHERE id_posteos = '{$id_posteo}'";
+      foreach ($conn->query($sql) as $row) {
+         ?>
 
       <p class="d-flex flex-start comentaritos"><?=$row['comentario']?></p>
+      <p class="d-flex flex-start comentaritos"><?=$row['user']?></p>
       <?php  } ?>
 
     </form>
