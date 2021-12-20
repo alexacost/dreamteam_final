@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-12-2021 a las 09:59:00
+-- Tiempo de generación: 21-12-2021 a las 00:32:44
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -234,9 +234,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `password`, `email`, `id_nivel`, `id_localidad`, `id_area`) VALUES
-(4, 'alejandro', '$2y$10$BIjoBw0g9eZ5fywgT32DnuzZlO0BoWrjhAM71BqnwERyST2gI75ji', 'ac00gye@gmail.com', 1, 1, 1),
-(5, 'lucas', '$2y$10$TcVAyt3XjxQ8YUDr6gJh6ewdYlEqsHB2opfVIGPn1wmo/t5D6gw2K', 'lucas.hubert@davinci.edu.ar', 2, 2, 2),
-(6, 'Jose', '$2y$10$dAvZEvCCxyu20babq85N.udYgBmD5OQvkzy5KhHdXx.//kY3hrErS', 'jose@gmail.com', 1, 3, 3),
+(1, 'useruser@test3.com', '$2y$10$pSEzMdS/IfLL//zmeKvgcuobDtBLcpW/n720.TtsUeTAC4crnAMiy', 'user@test3.com', 2, 0, 0),
 (7, 'Sol', '$2y$10$XsfTi67E0p4Zvre56kvoOOYZf88ILx7n0J8rOVxoA4Sq/QpZ6waI6', 'sol.cappone@davinci.edu.ar', 2, 3, 3),
 (8, 'Facu', '$2y$10$DKEQTd1gG6ejBdYSuyl8nuZpqFNvgzYsppax0BnXE6Y/18hCyBk.q', 'facundo.scuderi@davinci.edu.ar', 1, 4, 4),
 (9, 'nicole', '$2y$10$U2Yu9TC1E1rzJJM592Y5IO7OjNSu3PQK0hvr3.yhB3MjfpYCozJv6', 'nicki@nicole.com', 2, 1, 1),
@@ -244,9 +242,9 @@ INSERT INTO `usuarios` (`id`, `user`, `password`, `email`, `id_nivel`, `id_local
 (11, 'trueno', '$2y$10$i3alaXSRegC2TKumf20Bc.DPTQAAw/vAIZ6TaIXnWwV1gHfKP3EUC', 'trueno@pai.com', 2, 3, 3),
 (12, 'valentin', '$2y$10$926iMyk565FtNkr1a9eameYwOOtPRoDnF./5tFz1YV9huOtUZK3nG', 'wos@gmail.com', 1, 3, 3),
 (13, 'ecko', '$2y$10$sWqUm.MCyyFlm7JZXhVa3e75xQFvQibGXtYfmyZgUyQqL4J4v75o2', 'ecko@turrakaremix.com', 2, 2, 2),
-(17, 'Fede', '$2y$10$4AkGIkNq7Wr9sKuYXTOdfuAaEJA5gG817EAHXEvliHZgY2jmHjocK', 'fede@scuderi.com', 0, 0, 0),
-(18, 'gustavo', '$2y$10$FWFcix5PFmKjqDxiLDOZlOJqKjHzEU5.snT1xR/jIcq3JBpO8ONS.', 'gus@gmail.com', 0, 0, 0),
-(19, 'franco', '$2y$10$rxCCXsbXjSDST7Uumd/9RO3ODvr1tSyQjWBjoUcYY91JncQaYjdxO', 'franco@cantero.com', 0, 0, 0),
+(17, 'Fede', '$2y$10$4AkGIkNq7Wr9sKuYXTOdfuAaEJA5gG817EAHXEvliHZgY2jmHjocK', 'fede@scuderi.com', 1, 0, 0),
+(18, 'gustavo', '$2y$10$FWFcix5PFmKjqDxiLDOZlOJqKjHzEU5.snT1xR/jIcq3JBpO8ONS.', 'gus@gmail.com', 2, 0, 0),
+(19, 'franco', '$2y$10$rxCCXsbXjSDST7Uumd/9RO3ODvr1tSyQjWBjoUcYY91JncQaYjdxO', 'franco@cantero.com', 1, 0, 0),
 (20, 'marisa', '$2y$10$tnKTtj9Z0ZR6ihmmGkSJIOw4oqL3l.ybnK01kMDgLUrof1wF4O6fa', 'marisa@gmail.com', 0, 0, 0),
 (21, 'marisa1', '$2y$10$7b6f71cUQgm8KvStauGcfOaog8lXuFShDBcxTzDFxALSoWRN46naC', 'marisa1@gmail.com', 0, 0, 0),
 (22, 'marisa1', '$2y$10$M3Xwt9zc5CqbpJL3izIbrOg64Y.RGNfUX98tr9bIwxKOdmq8DJVvm', 'marisa1@gmail.com', 0, 0, 0),
@@ -272,7 +270,9 @@ INSERT INTO `usuarios` (`id`, `user`, `password`, `email`, `id_nivel`, `id_local
 (42, 'tito', '$2y$10$XbGAqNFfJKby5Nmxz2dSROX/VM7exQnX/aJUN9292at8eiLX/txEC', 'tito', 0, 0, 0),
 (43, 'tina', '$2y$10$BdfvaFdprZ.pnGyXxuC2Xu/THCw8pYGZOh79W42Ug5XfTvkEPv4hy', 'tina', 0, 0, 0),
 (44, 'tia', '$2y$10$EmosHRurjWjJhHI7WNPt8OnR6zgImTzRrg4Af5..i/dBvWUyGbbuO', 'tia', 0, 0, 0),
-(45, 'user_test1', '$2y$10$f97/tvZqdlqJZciMp0Vim.of.QP/QFlf2buhYHhymOWIxH7Uu/y6y', 'user@test.com', 0, 0, 0);
+(45, 'user_test1', '$2y$10$f97/tvZqdlqJZciMp0Vim.of.QP/QFlf2buhYHhymOWIxH7Uu/y6y', 'ac00gye@gmail.com', 2, 0, 0),
+(46, 'user_test2', '$2y$10$AmPrcZxPsHKWIxuIC6s7.OTtcZ.J6f9fmBfhsXwoWmRvyoGKuklPy', 'user2@test.com', 1, 0, 0),
+(47, 'marita', '$2y$10$AfVhzmPduzEIngJU1RNrPeUtr5HZfIL4fPvfWc8rkUiSJbmpAqAWW', 'marita', 0, 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -312,10 +312,7 @@ ALTER TABLE `posteos`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_localidad` (`id_localidad`),
-  ADD KEY `id_nivel` (`id_nivel`),
-  ADD KEY `id_area` (`id_area`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -355,29 +352,7 @@ ALTER TABLE `posteos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `localidades`
---
-ALTER TABLE `localidades`
-  ADD CONSTRAINT `localidades_ibfk_1` FOREIGN KEY (`id_localidad`) REFERENCES `usuarios` (`id_localidad`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `niveles`
---
-ALTER TABLE `niveles`
-  ADD CONSTRAINT `niveles_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `usuarios` (`id_nivel`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `posteos`
---
-ALTER TABLE `posteos`
-  ADD CONSTRAINT `posteos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
