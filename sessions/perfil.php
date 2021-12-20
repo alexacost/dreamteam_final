@@ -4,10 +4,11 @@ include '../index_include.php';
   $message = '';
   $profile = $_SESSION['user_id'];
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $sql = "UPDATE usuarios SET user = :user, email = :email WHERE id = '{$profile}'";
+    $sql = "UPDATE usuarios SET user = :user, email = :email, id = :id WHERE id = :id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $_POST['email']);
     $stmt->bindParam(':user', $_POST['user']);
+    $stmt->bindParam(':id', $_POST['id']);
 
     if ($stmt->execute()) {
       $message = 'Success!';
@@ -85,6 +86,7 @@ include '../index_include.php';
       <div class="col">
         <p class="d-flex flex-start nombrecitos">Email</p>
       <input type="text" name="email" id="email" value="<?= $row['email'] ?>">
+      <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>"> 
       </div>
       <div class="d-flex flex-column">
       <input type="submit" value="Guardar Cambios">
@@ -110,6 +112,7 @@ include '../index_include.php';
       <div class="col">
         <p class="d-flex flex-start nombrecitos">Email</p>
       <input type="text" name="email" id="email" value="<?= $row['email'] ?>">
+      <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>"> 
       </div>
       <div class="d-flex flex-column">
       <input type="submit" value="Guardar Cambios">
