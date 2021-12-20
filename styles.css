@@ -33,13 +33,7 @@
     background-color: #181819;
 }
 
-.titulo {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: center;
-}
+
 
 .texto-negrita {
     padding-top: 10px;
@@ -128,11 +122,26 @@ body {
     outline: none;
     padding: 20px;
     display: block;
-    width: 300px;
+    width: 100%;
     border-radius: 3px;
     border: 1px solid #eee;
     margin: 20px auto;
   }
+
+.passwordlogin{
+    outline: none;
+    padding: 20px;
+    display: block;
+    width: 300px;
+    border-radius: 3px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
   input[type="text"]{
     outline: none;
     padding: 20px;
@@ -147,8 +156,8 @@ body {
   input[type="submit"] {
     padding: 10px;
     color: #fff;
-    background: #0098cb;
-    width: 320px;
+    background: #ff2c55;
+    width: 342px;
     margin: 20px auto;
     margin-top: 0;
     border: 0;
@@ -156,7 +165,7 @@ body {
     cursor: pointer;
   }
   input[type="submit"]:hover {
-    background-color: #00b8eb;
+    opacity: .8;
   }
   
   /* Header */
@@ -168,7 +177,30 @@ body {
     text-align: center;
   }
   header a {
-    text-decoration: none;
-    color: #333;
+    color: white;
   }
+
+  header a:hover{
+      color:#ff2c55;
+  }
+
+  .nombrecitos{
+      font-weight: 600;
+      font-size: 18px;
+      color: #fafafa;
+  }
+
+  .comentaritos{
+      padding: 20px;
+      height: 70px;
+      border: 1px solid #ff2c55;
+      border-radius: 5px;
+  }
+
+  .dejanosTuOpinon{
+      font-size: 2em
+  }
+
+
+
   

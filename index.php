@@ -41,20 +41,21 @@ include 'index_include.php';
       </ul>
     </div>
   </div>
-    <h6 class="titulo m-1">Catalogo Multimedial</h6>
     </nav>
   </header>
 
   <main>
-    <p>Filtro</p>
+<p class="d-flex flex-start">Filtro</p>
 
-    <section class=" d-flex justify-content-between row">
+    
+
+    <section class="d-flex justify-content-around row">
 
       <?php
       $sql = 'SELECT * FROM posteos';
       foreach ($conn->query($sql) as $row) { ?>
 
-      <div class="card col-3 seccion" style="width: 18rem;">
+      <div class="card seccion" style="width: 18rem;">
         <?php 
         echo '<img class="card-img-top" src="data:foto/jpeg;base64,'.base64_encode($row['contenido']).'"/>';
         ?>
@@ -75,7 +76,7 @@ include 'index_include.php';
     <?php endif; ?>
   </main>
 
-  <footer class="page-footer font-small blue">
+  <footer class="page-footer font-small blue mt-5 mb-3">
     <div class="footer-copyright text-center py-3">© 2021 Copyright: <span class="footer_texto">DreamTeam</span> </div>
   </footer>
 

@@ -18,7 +18,7 @@ include 'signup_include.php'
     <h1>SignUp</h1>
     <span>or <a href="login.php">Login</a></span>
 
-    <form action="signup.php" method="POST">
+    <form class="passwordlogin" action="signup.php" method="POST">
       <input style="width: 300px;" name="email" type="text" placeholder="Enter your email">
       <input style="width: 300px;" name="user" type="text" placeholder="Enter your user">
       <input name="password" type="password" placeholder="Enter your Password">
