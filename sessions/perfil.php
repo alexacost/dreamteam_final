@@ -69,8 +69,9 @@ include '../index_include.php';
     <section class=" d-flex justify-content-between row mt-5">
 
       <?php
-      $sql = "SELECT user,email,password FROM usuarios where id = '{$profile}'";
+      $sql = "SELECT user,email,password,id_nivel FROM usuarios where id = '{$profile}'";
       foreach ($conn->query($sql) as $row) { ?>
+       <?php if($row['id_nivel'] != 2): ?>
       <form action="" method="POST">
       <div class="d-flex flex-column">
           <div class="col">
@@ -91,6 +92,32 @@ include '../index_include.php';
       </div>
       </form>
 
+      <?php else: ?> 
+        <?php
+      $sql = "SELECT user,email,password,id_nivel FROM usuarios";
+      foreach ($conn->query($sql) as $row) { ?>
+      
+      <form action="" method="POST">
+      <div class="d-flex flex-column">
+          <div class="col">
+              <p class="d-flex flex-start nombrecitos">User</p>
+      <input type="text" name="user" id="user" value="<?= $row['user'] ?>">
+        </div>
+        <div class="col">
+            <p  class="d-flex flex-start nombrecitos">Password</p>
+      <input type="password" name="password" value="<?= $row['password'] ?>">
+      </div>
+      <div class="col">
+        <p class="d-flex flex-start nombrecitos">Email</p>
+      <input type="text" name="email" id="email" value="<?= $row['email'] ?>">
+      </div>
+      <div class="d-flex flex-column">
+      <input type="submit" value="Guardar Cambios">
+      </div>
+      </div>
+      </form>
+      <?php   } ?>
+      <?php endif; ?>
       <?php   } ?>
     </section>
     <?php else: ?>
