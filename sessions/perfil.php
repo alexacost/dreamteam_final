@@ -73,7 +73,7 @@ include '../index_include.php';
       $sql = "SELECT user,email,password,id_nivel FROM usuarios where id = '{$profile}'";
       foreach ($conn->query($sql) as $row) { ?>
        <?php if($row['id_nivel'] != 2): ?>
-      <form action="" method="POST">
+      <form action="update.php" method="POST">
       <div class="d-flex flex-column">
           <div class="col">
               <p class="d-flex flex-start nombrecitos">User</p>
@@ -86,7 +86,6 @@ include '../index_include.php';
       <div class="col">
         <p class="d-flex flex-start nombrecitos">Email</p>
       <input type="text" name="email" id="email" value="<?= $row['email'] ?>">
-      <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>"> 
       </div>
       <div class="d-flex flex-column">
       <input type="submit" value="Guardar Cambios">
