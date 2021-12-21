@@ -32,7 +32,7 @@ $id_posteo = ($_GET['id']);
           <a class="nav-link active" aria-current="page" href="/dreamteam_final">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="perfil.php">Perfil de <?= $user['user']; ?></a>
+          <a class="nav-link" href="#">Perfil de <?= $user['user']; ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-danger" href="logout.php" tabindex="-1" aria-disabled="true">Logout</a>
@@ -48,10 +48,10 @@ $id_posteo = ($_GET['id']);
     <?php endif; ?>
     <form action="" method="POST">
     <?php
-      $sql = "SELECT * FROM posteos INNER JOIN usuarios ON posteos.id_usuario = usuarios.id WHERE id_posteo = '$id_posteo'  ";
+      $sql = "SELECT * FROM posteos WHERE id_posteo = '$id_posteo'";
       
       foreach ($conn->query($sql) as $row) { $id_posteo = $row['id_posteo'];
-      $id_usuario = $row['user'] ?>
+      $id_usuario = $row['id'] ?>
       <div class="">
   <div class="row mt-5">
     <div class="col">
@@ -64,14 +64,13 @@ $id_posteo = ($_GET['id']);
     <div class="col m-3 d-flex  flex-column flex-end">
       <h1 class="text-start"> <?= $row['titulo'] ?></h1>
     <p class="mb-5 text-start"> <?= $row['descripcion'] ?> </p>
-    <p class="text-muted d-flex "> Posteo creado por  <?=$row['user']?> </p>
     </div>
   </div>
   <div class="row divtuopinion">
     <div class="col">
       <p class="d-flex flex-start mt-5 dejanosTuOpinon">¡Dejanos tu opinión!</p>
       <input hidden id="id_posteos" name="id_posteos" value="<?= $id_posteo ?>">
-      <input hidden id="id_usuario" name="id_usuario" value="<?=$_SESSION['user_id']?>">
+      <input hidden id="id_posteos" name="id_posteos" value="<?= $id_usuario ?>">
     <input type="text" id="comentario" name="comentario" value="comentario" placeholder="comentario">
     <button type="submit" id="coment" name="coment" value="submit" class="boton btn d-flex flex-start">Submit</button>
     </form>
@@ -79,14 +78,11 @@ $id_posteo = ($_GET['id']);
   </div>
 </div>
       <?php  } ?>
-
       <h2 class="d-flex flex-start mt-5">Comentarios</h2>
-      <?php $sql = "SELECT * FROM comentarios INNER JOIN usuarios ON comentarios.id_usuario = usuarios.id  WHERE id_posteos = '{$id_posteo}'";
-      foreach ($conn->query($sql) as $row) {
-         ?>
+      <?php $sql = "SELECT * FROM comentarios WHERE id_posteos = '{$id_posteo}'";
+      foreach ($conn->query($sql) as $row) { ?>
 
       <p class="d-flex flex-start comentaritos"><?=$row['comentario']?></p>
-      <p class="d-flex flex-start text-muted">Comentado por <?=$row['user']?> a las <?=$row['time']?> </p>
       <?php  } ?>
 
     </form>
